@@ -30,10 +30,17 @@ jQuery(document).ready(function ($) {
         }
     });
 
+	var doneScrolling = true;
     function goToByScroll(dataslide) {
-        htmlbody.animate({
-            scrollTop: $('.slide[data-slide="' + dataslide + '"]').offset().top
-        }, 2000, 'easeInOutQuint');
+    	if(doneScrolling){
+    		doneScrolling = false;
+			htmlbody.animate({
+	            scrollTop: $('.slide[data-slide="' + dataslide + '"]').offset().top
+	        }, 2000, 'easeInOutQuint', function(){
+	        	doneScrolling = true;
+	        });
+    	}
+        
     }
 
 
